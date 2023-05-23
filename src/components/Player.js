@@ -106,7 +106,7 @@ const Player = () => {
             timeHandler()
             if(playState && player.current.currentTime == player.current.duration) {
                if(shuffleState) setIndexNumber(Math.floor(Math.random()*4))
-               else setIndexNumber(indexNumber + 1)
+               else if(audioFiles.lengrh > 1) setIndexNumber(indexNumber + 1)
             }
          }, 1000)
       }
@@ -158,7 +158,7 @@ const Player = () => {
                   <div className={styles.time}>
                      <div className={styles.lengthBar} onClick={seekingHandler}>
                         <div className={styles.coveredLength} style={{width: lengthBar}}>
-                           <img src={CircleWheel}/>
+                           <img src={CircleWheel} className={styles.circleWheel} style={{left: lengthBar-6}}/>
                         </div>
                      </div>
                      <span className={styles.songDuration}>

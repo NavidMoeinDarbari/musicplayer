@@ -120,6 +120,7 @@ main {
 .imgContainer img {
    width: 100%;
    height: 100%;
+   object-fit: cover;
 }
 .musicInfoPart {
    width: 100%;
@@ -173,18 +174,17 @@ main {
    background-color: #ffffff5c;
    display: flex; justify-content: left; align-items: center;
    cursor: pointer;
+   position: relative; 
 }
 .coveredLength {
    background-color: #F8F8F8;
    width: 0px;
    height: 100%;
    display: flex; justify-content: right; align-items: center;
-   position: relative; 
    cursor: pointer;
 }
 .coveredLength img {
    position: absolute;
-   right: -5px;
    width: 9px;
    cursor: pointer;
 }
@@ -263,24 +263,58 @@ footer {
       height: 100vh;
       border-radius: 0;
    }
+   .songNameContainer h1{
+      font-size: 1.5rem;
+   }
+   .headerContainer p {
+      font-size: 1rem;
+   }
+   .musicInfoPart p{
+      font-size: .92rem;
+   }
 }
+
 @media (min-width: 414px) and (min-height: 812px) {
    .mainContainer {
       width: 400px; 
       height: 700px;
    }
-   .headerContainer {padding: 2px 30px 0;}
-   .coverImgPart {padding: 0px 30px 27px;}
-   .musicInfoPart {padding: 0 30px;}
-   footer {padding: 0 30px;}
-   .headerContainer p {font-size: 1.1rem;}
-   .headerContainer label {width: 30px;}
-   .playlistIcon {width: 30px;}
-   .arrowLeftIcon {width: 22px;}
-   .info {height: 70px;}
-   .musicInfoPart p{font-size: 1.05rem;}
-   .songNameContainer h1{font-size: 1.8rem;}
-   .likeButton {width: 30px;}
+   .headerContainer {
+      padding: 2px 30px 0;
+   }
+   .coverImgPart {
+      padding: 0px 30px 27px;
+   } 
+   .musicInfoPart {
+      padding: 0 30px;
+   }
+   footer {
+      padding: 0 30px;
+   }
+   .headerContainer p {
+      font-size: 1.1rem;
+   }
+   .headerContainer label {
+      width: 30px;
+   }
+   .playlistIcon {
+      width: 30px;
+   }
+   .arrowLeftIcon {
+      width: 22px;
+   }
+   .info {
+      height: 70px;
+   }
+   .musicInfoPart p{
+      font-size: 1.05rem;
+   }
+   .songNameContainer h1{
+      font-size: 1.8rem;
+   }
+   .likeButton {
+      width: 30px;
+   }
    .songDuration , .songCurrentTime{
       bottom: -20px;
       font-size: .8rem;
