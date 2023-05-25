@@ -1,9 +1,8 @@
 import Player from './components/Player';
-import styles from './App.module.css';
 
 const App = () => {
   return (
-    <div className={styles.container}>
+    <div className='flex flex-row items-center justify-center w-full h-screen'>
       <Player/>
     </div>
   );

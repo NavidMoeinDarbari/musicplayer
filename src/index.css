@@ -2,22 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-   padding: 0;margin: 0;
-   box-sizing: border-box;
+@layer base {
+   *{
+      padding: 0;margin: 0;
+      box-sizing: border-box;
+   }
+   body {
+      background-color: black;
+   }
+   @font-face {
+      font-family: 'GothamBold';
+      src: url('../src/fonts/GothamBold.ttf')
+   }
+   @font-face {
+      font-family: 'GothamMedium';
+      src: url('../src/fonts/GothamMedium.ttf') 
+   }
+   @font-face {
+      font-family: 'GothamThin';
+      src: url('../src/fonts/GothamLight.ttf') 
+   }
 }
-body {
-   background-color: black;
+
+@layer utilities {
+   .pause {
+      animation-play-state: paused;
+   }
+   .play {
+      animation-play-state: running;
+   }
 }
-@font-face {
-   font-family: 'GothamBold';
-   src: url('../src/fonts/GothamBold.ttf')
+
+.time {
+   @apply font-gothamThin absolute text-ffffff79 text-timeTxtSize top-11
 }
-@font-face {
-   font-family: 'GothamMedium';
-   src: url('../src/fonts/GothamMedium.ttf') 
+.controlsImg {
+   @apply z-10 cursor-pointer transition duration-200
 }
-@font-face {
-   font-family: 'GothamThin';
-   src: url('../src/fonts/GothamLight.ttf') 
+.circles {
+   @apply w-130 h-90 rounded-full bg-ffffff5a absolute opacity-50
 }
