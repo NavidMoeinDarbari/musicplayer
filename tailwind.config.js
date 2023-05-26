@@ -61,7 +61,7 @@ module.exports = {
             60: '60px',
             40: '40px',
             3: '3px',
-            '40%': '40%',
+            '35%': '35%',
             '68%': '68%',
             '75%': '75%',
             '25%': '25%',
@@ -89,9 +89,9 @@ module.exports = {
          fontSize: {
             headerTxtLg: '1.1rem',
             headerTxtSize: '.92rem',
-            infoTxtSize: '.9rem',
+            infoTxtSize: '.92rem',
             songNameLg: '1.8rem',
-            songNameSize: '1.47rem',
+            songNameSize: '1.46rem',
             timeTxtLg: '.8rem',
             timeTxtSize: '.75rem',
             musicInfoLg: '1.05rem'

@@ -23,6 +23,7 @@ const Player = () => {
    const [lengthBar , setLengthBar] = useState(0)
    const [timeInfo , setTimeInfo] = useState({})
    const [shuffleState , setShuffleState] = useState(false)
+   const [isLiked ,setIsLiked] = useState(false)
 
    const input = useRef(null)
    const player = useRef(null)
@@ -39,6 +40,7 @@ const Player = () => {
    const changeHandler = () => {
       audioNamesSubstr(input.current.files)
       timeHandler()
+      addToFavorites()
    }
 
    const audioNamesSubstr = (audioList) => {
@@ -128,8 +130,14 @@ const Player = () => {
 
    const addToFavorites = () => {
       if(audioFiles.length) {
-         localStorage.getItem(`${indexNumber}`) ? localStorage.removeItem(`${indexNumber}`)
-         : localStorage.setItem(indexNumber, audioFiles[indexNumber].songName)
+         if(localStorage.getItem(`${indexNumber}`)) {
+            localStorage.removeItem(`${indexNumber}`)
+            setIsLiked(false)
+         } 
+         else {
+            localStorage.setItem(indexNumber, audioFiles[indexNumber].songName)
+            setIsLiked(true)
+         }
       }
    }
    
@@ -156,10 +164,10 @@ const Player = () => {
                <div className="w-full h-25% flex flex-col justify-between py-0 px-25 lg:px-30">
                   <div className="relative flex flex-col justify-between w-full h-60 lg:w-70">
                      <div className="flex flex-row items-center justify-between h-1/2">
-                        <h1 className="flex items-center justify-between h-full tracking-tight font-gothamMedium text-songNameSize text-F8F8F8 sm:text-2xl lg:text-songNameLg">{audioFiles.length ? audioFiles[indexNumber].songName : 'No title'}</h1>
-                        <img src={localStorage.getItem(`${indexNumber}`) ? RedHeart : WhiteHeart } className="w-22 opacity-90 lg:w-30" onClick={addToFavorites}/>
+                        <h1 className="flex items-center justify-between h-full font-gothamMedium text-songNameSize text-F8F8F8 sm:text-2xl lg:text-songNameLg">{audioFiles.length ? audioFiles[indexNumber].songName : 'No title'}</h1>
+                        <img src={localStorage.getItem(`${indexNumber}`) && isLiked ? RedHeart : WhiteHeart } className="cursor-pointer w-23 opacity-90 lg:w-30" onClick={addToFavorites}/>
                      </div>
-                     <p className="h-40% flex justify-start items-center text-ffffff79 text-infoTxtSize font-gothamThin leading-17 sm:text-headerTxtSize lg:text-musicInfoLg">{audioFiles.length ? audioFiles[indexNumber].artist : 'Unknown'}</p>
+                     <p className="h-35% flex justify-start items-center text-ffffff79 text-infoTxtSize tracking-wide font-gothamThin leading-17 sm:text-headerTxtSize lg:text-musicInfoLg">{audioFiles.length ? audioFiles[indexNumber].artist : 'Unknown'}</p>
                   </div>
                   <div className="relative w-full h-40 flex justify-center items-end pb-0.5">
                      <div className="relative flex items-center justify-start w-full h-3 cursor-pointer bg-ffffff5c" onClick={seekingHandler}>
