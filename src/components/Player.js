@@ -105,7 +105,7 @@ const Player = () => {
             timeHandler()
             if(playState && player.current.currentTime == player.current.duration) {
                if(shuffleState) setIndexNumber(Math.floor(Math.random()*4))
-               else if(audioFiles.lengrh > 1) setIndexNumber(indexNumber + 1)
+               else if(audioFiles.length > 1) setIndexNumber(indexNumber + 1)
             }
          }, 1000)
       }
@@ -123,6 +123,13 @@ const Player = () => {
          const dSeconds = duration.getUTCSeconds()
          const newDurationString = `${dMinutes.toString()}:${dSeconds.toString().padStart(2,'0')}`
          setTimeInfo({currentTime: newCurrentTimeString, duration: newDurationString})
+      }
+   }
+
+   const addToFavorites = () => {
+      if(audioFiles.length) {
+         localStorage.getItem(`${indexNumber}`) ? localStorage.removeItem(`${indexNumber}`)
+         : localStorage.setItem(indexNumber, audioFiles[indexNumber].songName)
       }
    }
    
@@ -150,7 +157,7 @@ const Player = () => {
                   <div className="relative flex flex-col justify-between w-full h-60 lg:w-70">
                      <div className="flex flex-row items-center justify-between h-1/2">
                         <h1 className="flex items-center justify-between h-full tracking-tight font-gothamMedium text-songNameSize text-F8F8F8 sm:text-2xl lg:text-songNameLg">{audioFiles.length ? audioFiles[indexNumber].songName : 'No title'}</h1>
-                        <img src={WhiteHeart} className="w-22 opacity-90 lg:w-30"/>
+                        <img src={localStorage.getItem(`${indexNumber}`) ? RedHeart : WhiteHeart } className="w-22 opacity-90 lg:w-30" onClick={addToFavorites}/>
                      </div>
                      <p className="h-40% flex justify-start items-center text-ffffff79 text-infoTxtSize font-gothamThin leading-17 sm:text-headerTxtSize lg:text-musicInfoLg">{audioFiles.length ? audioFiles[indexNumber].artist : 'Unknown'}</p>
                   </div>
