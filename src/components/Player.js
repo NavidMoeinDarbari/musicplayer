@@ -40,7 +40,6 @@ const Player = () => {
    const changeHandler = () => {
       audioNamesSubstr(input.current.files)
       timeHandler()
-      addToFavorites()
    }
 
    const audioNamesSubstr = (audioList) => {
@@ -142,9 +141,9 @@ const Player = () => {
    }
    
    return (
-      <div className="relative overflow-hidden w-300 h-600 bg-0b0b0c rounded-40 font-gothamBold sm:w-screen sm:h-screen sm:rounded-none lg:w-400 lg:h-700">
+      <div className="relative overflow-hidden w-300 h-600 bg-0b0b0c rounded-40 font-gothamBold sm:w-screen sm:h-screen sm:rounded-none lg:w-400 lg:h-800 lg:rounded-45">
          <div className="absolute flex flex-col justify-start w-full h-full">
-            <header className="w-full h-12% bg-transparent">
+            <header className="w-full h-12% bg-transparent lg:h-11.5%">
                <div className="w-full h-full flex justify-between items-center pt-0.5 px-26 pb-0 lg:px-30">
                   <img src={ArrowLeft} className="z-10 transition duration-200 cursor-pointer w-17 opacity-60 hover:opacity-90 lg:w-22"/>
                   <p className={`${playState? 'animate-colorAnimation' : 'animate-none'} text-ffffff77 font-gothamThin text-headerTxtSize sm:text-base lg:text-headerTxtLg`}>{playState ? 'Playing now' : 'Paused'}</p>
@@ -155,19 +154,19 @@ const Player = () => {
                   <audio src={`songs/${audioNames[indexNumber]}`} ref={player}></audio>
                </div>
             </header>
-            <main className="w-full h-68% z-10">
-               <div className="w-full h-75% pt-0 px-25 pb-27 lg:px-30">
-                  <div className="flex items-center justify-center w-full h-full overflow-hidden bg-black rounded-20 shadow-coverImgShadow">
+            <main className="w-full h-68% z-10 lg:h-69.5%">
+               <div className="w-full h-75% pt-0 px-25 pb-25 lg:px-30">
+                  <div className="flex items-center justify-center w-full h-full overflow-hidden bg-black rounded-20 shadow-coverImgShadow lg:rounded-25">
                      <img src={CoverImage} className="object-cover w-full h-full"/>  
                   </div>
                </div>
                <div className="w-full h-25% flex flex-col justify-between py-0 px-25 lg:px-30">
-                  <div className="relative flex flex-col justify-between w-full h-60 lg:w-70">
-                     <div className="flex flex-row items-center justify-between h-1/2">
+                  <div className="relative flex flex-col justify-between w-full gap-5 h-60 lg:w-70 lg:gap-3">
+                     <div className="flex flex-row items-center justify-between h-full">
                         <h1 className="flex items-center justify-between h-full font-gothamMedium text-songNameSize text-F8F8F8 sm:text-2xl lg:text-songNameLg">{audioFiles.length ? audioFiles[indexNumber].songName : 'No title'}</h1>
-                        <img src={localStorage.getItem(`${indexNumber}`) && isLiked ? RedHeart : WhiteHeart } className="cursor-pointer w-23 opacity-90 lg:w-30" onClick={addToFavorites}/>
+                        <img src={localStorage.getItem(`${indexNumber}`) && isLiked ? RedHeart : WhiteHeart } className="cursor-pointer w-23 opacity-90 lg:w-28" onClick={addToFavorites}/>
                      </div>
-                     <p className="h-35% flex justify-start items-center text-ffffff79 text-infoTxtSize tracking-wide font-gothamThin leading-17 sm:text-headerTxtSize lg:text-musicInfoLg">{audioFiles.length ? audioFiles[indexNumber].artist : 'Unknown'}</p>
+                     <p className="items-center justify-start h-full text-ffffff79 text-infoTxtSize font-gothamThin leading-17 sm:text-headerTxtSize lg:text-musicInfoLg">{audioFiles.length ? audioFiles[indexNumber].artist : 'Unknown'}</p>
                   </div>
                   <div className="relative w-full h-40 flex justify-center items-end pb-0.5">
                      <div className="relative flex items-center justify-start w-full h-3 cursor-pointer bg-ffffff5c" onClick={seekingHandler}>
@@ -184,17 +183,17 @@ const Player = () => {
                   </div>
                </div>
             </main>
-            <footer className="w-full h-20% flex justify-center items-center pt-0.5 px-25 pb-0 lg:px-30">
+            <footer className="w-full h-20% flex justify-center items-center pt-0.5 px-25 pb-0 lg:px-30 lg:h-19%">
                <div className="flex flex-row items-center justify-between w-full">
-                  <img src={Shuffle} className="opacity-50 controlsImg w-21 hover:opacity-95 lg:w-25" style={{opacity: shuffleState && '100%'}} onClick={() => setShuffleState(!shuffleState)}/>
-                  <img src={Next_Previous} className="rotate-180 controlsImg w-19 opacity-95 hover:opacity-60 lg:w-23" onClick={() => indexNumberHandler('decrease')}/>
-                  <div className="z-10 flex items-center justify-center transition duration-200 rounded-full cursor-pointer w-66 h-66 hover:opacity-60 bg-F8F8F8 lg:w-72 lg:h-72" onClick={playPauseHandler}>
+                  <img src={Shuffle} className="opacity-50 controlsImg w-21 hover:opacity-95 lg:w-28" style={{opacity: shuffleState && '100%'}} onClick={() => setShuffleState(!shuffleState)}/>
+                  <img src={Next_Previous} className="rotate-180 controlsImg w-19 opacity-95 hover:opacity-60 lg:w-27" onClick={() => indexNumberHandler('decrease')}/>
+                  <div className="z-10 flex items-center justify-center transition duration-200 rounded-full cursor-pointer w-66 h-66 hover:opacity-60 bg-F8F8F8 lg:w-76 lg:h-76" onClick={playPauseHandler}>
                      {
-                        playState? <img className="controlsImg w-15 hover:opacity-100 lg:w-17" src={Pause}/> : <img className="controlsImg w-15 hover:opacity-100 lg:w-17" src={Play}/>
+                        playState? <img className="controlsImg w-15 hover:opacity-100 lg:w-19" src={Pause}/> : <img className="controlsImg w-15 hover:opacity-100 lg:w-19" src={Play}/>
                      }
                   </div>
-                  <img src={Next_Previous} className="controlsImg w-19 opacity-95 hover:opacity-60" onClick={() => indexNumberHandler('increase')}/>
-                  <img src={Repeat} className="opacity-50 controlsImg w-21 hover:opacity-95 lg:w-25"/>
+                  <img src={Next_Previous} className="controlsImg w-19 opacity-95 hover:opacity-60 lg:w-27" onClick={() => indexNumberHandler('increase')}/>
+                  <img src={Repeat} className="opacity-50 controlsImg w-21 hover:opacity-95 lg:w-28"/>
                </div>
             </footer>
          </div>

@@ -39,9 +39,14 @@ module.exports = {
             400: '400px',
             300: '300px',
             130: '130px',
+            76: '76px',
             72: '72px',
             66: '66px',
             30: '30px',
+            29: '29px',
+            28: '28px',
+            27: '27px',
+            26: '26px',
             25: '25px',
             23: '23px',
             22: '22px',
@@ -52,24 +57,32 @@ module.exports = {
             9: '9px'
          },
          height: {
+            800: '800px',
             700: '700px',
             600: '600px',
             90: '90px',
+            76: '76px',
             72: '72px',
             70: '70px',
             66: '66px',
             60: '60px',
             40: '40px',
             3: '3px',
-            '35%': '35%',
-            '68%': '68%',
+            '75.5%': '75.5%',
             '75%': '75%',
+            '69.5%': '69.5%',
+            '68%': '68%',
+            '35%': '35%',
             '25%': '25%',
             '20%': '20%',
+            '19%': '19%',
             '12%' : '12%',
+            '11.5%': '11.5%'
          },
          borderRadius: {
+            45: '45px',
             40: '40px',
+            25: '25px',
             20: '20px',
          },
          padding:{
@@ -87,14 +100,14 @@ module.exports = {
             gothamThin : ['GothamThin']
          },
          fontSize: {
-            headerTxtLg: '1.1rem',
-            headerTxtSize: '.92rem',
-            infoTxtSize: '.92rem',
-            songNameLg: '1.8rem',
-            songNameSize: '1.46rem',
-            timeTxtLg: '.8rem',
+            headerTxtLg: '1.2rem',
+            headerTxtSize: '.95rem',
+            infoTxtSize: '.9rem',
+            songNameLg: '1.85rem',
+            songNameSize: '1.47rem',
+            timeTxtLg: '.9rem',
             timeTxtSize: '.75rem',
-            musicInfoLg: '1.05rem'
+            musicInfoLg: '1.1rem'
          },
          lineHeight: {
             17: '17px'
@@ -102,7 +115,12 @@ module.exports = {
          spacing: {
             '-10': '-10px',
             '-20': '-20px',
-            '-30': '-30px'
+            '-25': '-25px',
+            '-30': '-50px'
+         },
+         gap: {
+            6: '6px',
+            5: '5px'
          }
      },
    },
