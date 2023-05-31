@@ -27,6 +27,7 @@ const Player = () => {
 
    const input = useRef(null)
    const player = useRef(null)
+   const songLength = useRef(null)
 
    useEffect(() => {
       if(playState && audioFiles.length) {
@@ -41,7 +42,6 @@ const Player = () => {
       audioNamesSubstr(input.current.files)
       timeHandler()
    }
-
    const audioNamesSubstr = (audioList) => {
       const substrAudioFiles = [] 
       const audioNames = []
@@ -93,7 +93,7 @@ const Player = () => {
 
    const seekingHandler = (event) => {
       if(audioFiles.length) {
-         player.current.currentTime = (event.nativeEvent.offsetX * player.current.duration) / 250
+         player.current.currentTime = (event.nativeEvent.offsetX * player.current.duration) / songLength.current.clientWidth
          setLengthBar(event.nativeEvent.offsetX)
       }
    }
@@ -101,7 +101,7 @@ const Player = () => {
    const lengthBarCover = () => {
       if(playState) {
          setInterval(() => {
-            const lengthCovered = (250* player.current.currentTime) / player.current.duration 
+            const lengthCovered = (songLength.current.clientWidth * player.current.currentTime) / player.current.duration 
             setLengthBar(lengthCovered)
             timeHandler()
             if(playState && player.current.currentTime == player.current.duration) {
@@ -143,7 +143,7 @@ const Player = () => {
    return (
       <div className="relative overflow-hidden w-300 h-600 bg-0b0b0c rounded-40 font-gothamBold sm:w-screen sm:h-screen sm:rounded-none lg:w-400 lg:h-800 lg:rounded-45">
          <div className="absolute flex flex-col justify-start w-full h-full">
-            <header className="w-full h-12% bg-transparent lg:h-11.5%">
+            <header className="w-full h-11.5% bg-transparent">
                <div className="w-full h-full flex justify-between items-center pt-0.5 px-26 pb-0 lg:px-30">
                   <img src={ArrowLeft} className="z-10 transition duration-200 cursor-pointer w-17 opacity-60 hover:opacity-90 lg:w-22"/>
                   <p className={`${playState? 'animate-colorAnimation' : 'animate-none'} text-ffffff77 font-gothamThin text-headerTxtSize sm:text-base lg:text-headerTxtLg`}>{playState ? 'Playing now' : 'Paused'}</p>
@@ -154,7 +154,7 @@ const Player = () => {
                   <audio src={`songs/${audioNames[indexNumber]}`} ref={player}></audio>
                </div>
             </header>
-            <main className="w-full h-68% z-10 lg:h-69.5%">
+            <main className="w-full h-68.5% z-10 lg:h-69.5%">
                <div className="w-full h-75% pt-0 px-25 pb-25 lg:px-30">
                   <div className="flex items-center justify-center w-full h-full overflow-hidden bg-black rounded-20 shadow-coverImgShadow lg:rounded-25">
                      <img src={CoverImage} className="object-cover w-full h-full"/>  
@@ -169,9 +169,9 @@ const Player = () => {
                      <p className="items-center justify-start h-full text-ffffff79 text-infoTxtSize font-gothamThin leading-17 sm:text-headerTxtSize lg:text-musicInfoLg">{audioFiles.length ? audioFiles[indexNumber].artist : 'Unknown'}</p>
                   </div>
                   <div className="relative w-full h-40 flex justify-center items-end pb-0.5">
-                     <div className="relative flex items-center justify-start w-full h-3 cursor-pointer bg-ffffff5c" onClick={seekingHandler}>
-                        <div className="flex items-center justify-end w-0 h-full cursor-pointer bg-F8F8F8 " style={{width: lengthBar}}>
-                           <img src={CircleWheel} className="absolute cursor-pointer w-9" style={{left: lengthBar-5}}/>
+                     <div className="relative flex items-center justify-start w-full h-3 cursor-pointer bg-ffffff5c" onClick={seekingHandler} ref={songLength}>
+                        <div className="flex items-center justify-end w-0 h-full cursor-pointer bg-F8F8F8 " style={{width: lengthBar}} >
+                           <img src={CircleWheel} className="absolute cursor-pointer w-9" style={{left: lengthBar-6}}/>
                         </div>
                      </div>
                      <span className="right-0 time lg:-bottom-20 lg:text-timeTxtLg">

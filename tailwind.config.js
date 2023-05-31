@@ -71,6 +71,8 @@ module.exports = {
             '75.5%': '75.5%',
             '75%': '75%',
             '69.5%': '69.5%',
+            '69%': '69%',
+            '68.5%': '68.5%',
             '68%': '68%',
             '35%': '35%',
             '25%': '25%',
@@ -101,7 +103,7 @@ module.exports = {
          },
          fontSize: {
             headerTxtLg: '1.2rem',
-            headerTxtSize: '.95rem',
+            headerTxtSize: '.92rem',
             infoTxtSize: '.9rem',
             songNameLg: '1.85rem',
             songNameSize: '1.47rem',
