@@ -28,7 +28,7 @@ module.exports = {
             circlesAnimation: 'circlesAnimation 8s ease-in-out infinite'
          },
          colors: {
-            '0b0b0c' : '#0b0b0c',
+            '0f0f0f' : '#0f0f0f',
             'ffffff77': '#ffffff77',
             'ffffff79': '#ffffff79',
             'ffffff5c': '#ffffff5c',

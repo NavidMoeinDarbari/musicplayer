@@ -141,7 +141,7 @@ const Player = () => {
    }
    
    return (
-      <div className="relative overflow-hidden w-300 h-600 bg-0b0b0c rounded-40 font-gothamBold sm:w-screen sm:h-screen sm:rounded-none lg:w-400 lg:h-800 lg:rounded-45">
+      <div className="relative overflow-hidden w-300 h-600 bg-0f0f0f rounded-40 font-gothamBold sm:w-screen sm:h-screen sm:rounded-none lg:w-400 lg:h-800 lg:rounded-45">
          <div className="absolute flex flex-col justify-start w-full h-full">
             <header className="w-full h-11.5% bg-transparent">
                <div className="w-full h-full flex justify-between items-center pt-0.5 px-26 pb-0 lg:px-30">
